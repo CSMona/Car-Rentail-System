@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuperCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CarReg">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carno" Type="varchar" MaxLength="50" />
+    <Property Name="make" Type="varchar" MaxLength="50" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="available" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="custname" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="mobile" Type="int" />
+  </EntityType>
+  <EntityType Name="rentail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carid" Type="varchar" MaxLength="50" />
+    <Property Name="custid" Type="int" />
+    <Property Name="fee" Type="int" />
+    <Property Name="sdate" Type="date" />
+    <Property Name="edate" Type="date" />
+  </EntityType>
+  <EntityType Name="returncar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carno" Type="varchar" MaxLength="50" />
+    <Property Name="custid" Type="int" />
+    <Property Name="date" Type="date" />
+    <Property Name="elsp" Type="int" />
+    <Property Name="fine" Type="int" />
+  </EntityType>
+  <EntityContainer Name="SuperCarModelStoreContainer">
+    <EntitySet Name="CarReg" EntityType="Self.CarReg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rentail" EntityType="Self.rentail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="returncar" EntityType="Self.returncar" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SuperCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarReg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carno" Type="varchar" MaxLength="50" />
+          <Property Name="make" Type="varchar" MaxLength="50" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="available" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="custname" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="mobile" Type="int" />
+        </EntityType>
+        <EntityType Name="rentail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carid" Type="varchar" MaxLength="50" />
+          <Property Name="custid" Type="int" />
+          <Property Name="fee" Type="int" />
+          <Property Name="sdate" Type="date" />
+          <Property Name="edate" Type="date" />
+        </EntityType>
+        <EntityType Name="returncar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carno" Type="varchar" MaxLength="50" />
+          <Property Name="custid" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="elsp" Type="int" />
+          <Property Name="fine" Type="int" />
+        </EntityType>
+        <EntityContainer Name="SuperCarModelStoreContainer">
+          <EntitySet Name="CarReg" EntityType="Self.CarReg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rentail" EntityType="Self.rentail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="returncar" EntityType="Self.returncar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SuperCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarReg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="custname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SuperCarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarRegs" EntityType="Self.CarReg" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="rentails" EntityType="SuperCarModel.rentail" />
+          <EntitySet Name="returncars" EntityType="SuperCarModel.returncar" />
+        </EntityContainer>
+        <EntityType Name="rentail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="custid" Type="Int32" />
+          <Property Name="fee" Type="Int32" />
+          <Property Name="sdate" Type="DateTime" Precision="0" />
+          <Property Name="edate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="returncar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="custid" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="elsp" Type="Int32" />
+          <Property Name="fine" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SuperCarModelStoreContainer" CdmEntityContainer="SuperCarEntities">
+          <EntitySetMapping Name="CarRegs">
+            <EntityTypeMapping TypeName="SuperCarModel.CarReg">
+              <MappingFragment StoreEntitySet="CarReg">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="carno" ColumnName="carno" />
+                <ScalarProperty Name="make" ColumnName="make" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="available" ColumnName="available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SuperCarModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="custname" ColumnName="custname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rentails">
+            <EntityTypeMapping TypeName="SuperCarModel.rentail">
+              <MappingFragment StoreEntitySet="rentail">
+                <ScalarProperty Name="edate" ColumnName="edate" />
+                <ScalarProperty Name="sdate" ColumnName="sdate" />
+                <ScalarProperty Name="fee" ColumnName="fee" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="carid" ColumnName="carid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="returncars">
+            <EntityTypeMapping TypeName="SuperCarModel.returncar">
+              <MappingFragment StoreEntitySet="returncar">
+                <ScalarProperty Name="fine" ColumnName="fine" />
+                <ScalarProperty Name="elsp" ColumnName="elsp" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="carno" ColumnName="carno" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

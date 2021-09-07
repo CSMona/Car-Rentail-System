@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SuperCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CarReg">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="available" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="custname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="SuperCarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CarRegs" EntityType="Self.CarReg" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="rentails" EntityType="SuperCarModel.rentail" />
+    <EntitySet Name="returncars" EntityType="SuperCarModel.returncar" />
+  </EntityContainer>
+  <EntityType Name="rentail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="custid" Type="Int32" />
+    <Property Name="fee" Type="Int32" />
+    <Property Name="sdate" Type="DateTime" Precision="0" />
+    <Property Name="edate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="returncar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="custid" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="elsp" Type="Int32" />
+    <Property Name="fine" Type="Int32" />
+  </EntityType>
+</Schema>

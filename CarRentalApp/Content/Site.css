@@ -1,0 +1,116 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-default {
+    background-color: #d07e7e;
+    border-color: #e7e7e7;
+}
+
+    .navbar-default .navbar-nav > li > a {
+        color: #e7e7e7;
+        font-family: myFont;
+    }
+
+ .navbar-default .navbar-nav > li > a:hover {
+            color: crimson;
+        }
+
+.nav > li {
+    position: relative;
+    display: block;
+    height: 75px;
+    padding-top: 10px;
+}
+
+.myfooter {
+    background-color: #d07e7e;
+    padding-bottom:-20px;
+}
+
+.subfooter {
+    background-color: #d07e7e;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.myfooter  p {
+    margin-bottom: 0;
+}
+
+
+.logo-size {
+    width: 120px;
+    height: 62px;
+    margin-top: -7px;
+    border-radius: 35%;
+}
+
+.control-label {
+    background-color:white;
+    color: #d07e7e
+}
+.control-label {
+    background-color: white;
+    color: #d07e7e
+}
+    .text-danger {
+        background-color: firebrick;
+        color: wheat;
+    }
+/*.btn-link{
+    background-color:black;
+    color:wheat;
+    text-decoration:none;
+    display:inline-flex;
+    border:50px;
+
+}*/
+
+.jumbotron {
+    background-color:crimson;
+    color: #fff;
+}
+/*Return Car*/
+.form-label {
+    color: #d07e7e;
+}
+.form-control {
+    background-color:crimson;
+    color: wheat;
+}
+.btn-success {
+    background-color: #d07e7e;
+}
+    .btn-success:hover {
+        background-color: crimson;
+    }
+
+.img-class{
+  
+   display:inline;
+   height:250px;
+   width:400px;
+}

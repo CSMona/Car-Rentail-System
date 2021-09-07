@@ -1,0 +1,98 @@
+﻿@model CarRentalApp.Models.returncar
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="row">
+        <div class="col-sm-4">
+
+            @using (Html.BeginForm("Save", "ReturnCar", FormMethod.Post, new { id = "popupForm" }))
+            {
+                <div>
+                    <h1>Car Rentail</h1>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Car No</label>
+                    <input type="text" id="carno" name="carno" class="form-control" placeholder="Car ID" required />
+
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-label">Customer ID</label>
+                    <input type="text" id="custid" name="custid" class="form-control" placeholder="Customer ID" required />
+                </div>
+
+
+                <div class="form-group">
+                    <label class="form-label">End Date</label>
+                    <input type="text" id="date" name="date" class="form-control" placeholder="Customer Name" required />
+                </div>
+
+                @*<div class="form-group">
+                    <label class="form-label">Days Elapsed</label>
+                    <input type="text" id="elsp" name="elsp" class="form-control" placeholder="Rentail Fee" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fine</label>
+                    <input type="text" id="fine" name="fine" class="form-control" placeholder="Start Date" required />
+                </div>*@
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+
+            }
+
+        </div>
+        <br /> <br /> <br /> <br />
+
+        <img src="~/image/lm1.png" class="img-class" />
+    </div>
+
+@section scripts
+    {
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script>
+        getCarid();
+        function getCarid() {
+            $("#carno").keyup(function (e) {
+
+                $.ajax
+                    ({
+                        type: 'POST',
+                        url: '/ReturnCar/Getid?carno=' + $("#carno").val(),
+                        dataType: 'JSON',
+                        success: function (data) {
+                            console.log(data)
+                            $('#custid').val(data[0].Custid);
+                            $('#date').val(new Date(parseInt(data[0].EndDate.substr(6))).toLocaleDateString());
+                            //$('#elsp').val(data[0].ElapseDays);
+
+                            //var elap = data[0].ElapseDays;
+                            //if (elap > 0) {
+                            //    var fine = elap * 100;
+                            //    $('#fine').val(fine.toString());
+                            //}
+                            //else {
+                            //    $('#fine').val("0");
+
+                            //}
+
+
+                        }
+                    });
+
+            });
+
+        }
+
+    </script>
+}
